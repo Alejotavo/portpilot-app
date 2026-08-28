@@ -10,47 +10,79 @@ function Sidebar() {
 
   return (
     <div className="sticky top-14 flex flex-none h-[calc(100vh-3.5rem)]">
-      <aside className="w-12 flex-none flex flex-col border-r border-gray-300">
-        <button
-          type="button"
-          onClick={() => toggle('monitoreo')}
-          aria-expanded={openSection === 'monitoreo'}
-          className={`flex items-center justify-center w-full h-10 cursor-pointer ${openSection === 'monitoreo' ? 'bg-gray-100' : ''}`}
-        >
-          <TrendUpIcon />
-        </button>
-        <button
-          type="button"
-          onClick={() => toggle('alarmas')}
-          aria-expanded={openSection === 'alarmas'}
-          className={`flex items-center justify-center w-full h-10 cursor-pointer ${openSection === 'alarmas' ? 'bg-gray-100' : ''}`}
-        >
-          <BellIcon />
-        </button>
+      <aside className="w-12 flex-none flex flex-col bg-bg-subtle border-r border-border">
+        <nav className="flex flex-col gap-0.5 p-1.5">
+          <button
+            type="button"
+            onClick={() => toggle('monitoreo')}
+            aria-expanded={openSection === 'monitoreo'}
+            className={`relative flex items-center justify-center h-9 rounded-md cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-focus-ring ${
+              openSection === 'monitoreo'
+                ? 'bg-surface text-focus-ring dark:bg-maintenance-bg dark:text-maintenance-text'
+                : 'text-text-secondary hover:bg-border hover:text-text-primary dark:hover:bg-surface-raised'
+            }`}
+          >
+            {openSection === 'monitoreo' && (
+              <span className="absolute -left-1.5 top-1.5 bottom-1.5 w-0.75 rounded-r-sm bg-focus-ring" />
+            )}
+            <TrendUpIcon />
+          </button>
+          <button
+            type="button"
+            onClick={() => toggle('alarmas')}
+            aria-expanded={openSection === 'alarmas'}
+            className={`relative flex items-center justify-center h-9 rounded-md cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-focus-ring ${
+              openSection === 'alarmas'
+                ? 'bg-surface text-focus-ring dark:bg-maintenance-bg dark:text-maintenance-text'
+                : 'text-text-secondary hover:bg-border hover:text-text-primary dark:hover:bg-surface-raised'
+            }`}
+          >
+            {openSection === 'alarmas' && (
+              <span className="absolute -left-1.5 top-1.5 bottom-1.5 w-0.75 rounded-r-sm bg-focus-ring" />
+            )}
+            <BellIcon />
+          </button>
+        </nav>
       </aside>
 
       <section
-        className={`flex-none overflow-hidden border-r border-gray-300 transition-[width] duration-200 ${
+        className={`flex-none flex flex-col bg-surface border-r border-border overflow-hidden transition-[width] duration-200 ${
           openSection ? 'w-60' : 'w-0'
         }`}
       >
-        <div className="w-60 p-3">
+        <div className="w-60 flex flex-col flex-1">
           {openSection === 'monitoreo' && (
             <>
-              <div className="font-semibold mb-2">Monitoreo</div>
-              <ul className="flex flex-col gap-1">
-                <li>Tab RTG</li>
-                <li>Tab STS</li>
-                <li>Tab ITV / GPS</li>
+              <header className="flex items-center gap-2 h-9 px-3 flex-none bg-bg-subtle border-b border-border">
+                <span className="flex-1 text-body font-semibold text-text-primary">Monitoreo</span>
+                <span className="text-value-xs font-mono text-text-disabled">3</span>
+              </header>
+              <ul className="flex flex-col gap-0.5 p-2">
+                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
+                  Tab RTG
+                </li>
+                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
+                  Tab STS
+                </li>
+                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
+                  Tab ITV / GPS
+                </li>
               </ul>
             </>
           )}
           {openSection === 'alarmas' && (
             <>
-              <div className="font-semibold mb-2">Alarmas</div>
-              <ul className="flex flex-col gap-1">
-                <li>Sin reconocer</li>
-                <li>Historial</li>
+              <header className="flex items-center gap-2 h-9 px-3 flex-none bg-bg-subtle border-b border-border">
+                <span className="flex-1 text-body font-semibold text-text-primary">Alarmas</span>
+                <span className="text-value-xs font-mono text-text-disabled">2</span>
+              </header>
+              <ul className="flex flex-col gap-0.5 p-2">
+                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
+                  Sin reconocer
+                </li>
+                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
+                  Historial
+                </li>
               </ul>
             </>
           )}
