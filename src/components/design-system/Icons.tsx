@@ -33,3 +33,11 @@ export function ChevronDownIcon({ className = '' }) {
     </svg>
   )
 }
+
+export function TrendUpIcon({ className = '' }) {
+  return (
+    <svg width="17" height="17" className={className} style={{ stroke: 'currentColor', strokeWidth: 1.7, fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' }}>
+      <path d="M2 13.5 6 7l3 3 5-7.5" />
+    </svg>
+  )
+}
