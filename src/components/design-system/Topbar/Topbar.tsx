@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { MoonIcon, SunIcon, ChevronDownIcon } from './Icons'
+import { MoonIcon, SunIcon, ChevronDownIcon } from '../Icons'
 
 function Topbar() {
   const [dark, setDark] = useState(false)
