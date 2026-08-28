@@ -1,111 +1,240 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+/* Tailwind v4 usa prefers-color-scheme por defecto para `dark:`; esto lo cambia a toggle por clase (.dark en <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@theme {
+  /* ===== Tipografía — familias ===== */
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  /* ===== Tipografía — escala de texto ===== */
+  --text-display: 2rem;
+  --text-display--line-height: 2.5rem;
+  --text-display--font-weight: 600;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-h1: 1.5rem;
+  --text-h1--line-height: 2rem;
+  --text-h1--font-weight: 600;
+
+  --text-h2: 1.25rem;
+  --text-h2--line-height: 1.75rem;
+  --text-h2--font-weight: 600;
+
+  --text-h3: 1rem;
+  --text-h3--line-height: 1.5rem;
+  --text-h3--font-weight: 600;
+
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.25rem;
+  --text-body--font-weight: 400;
+
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.125rem;
+  --text-label--font-weight: 500;
+
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1rem;
+  --text-caption--font-weight: 400;
+
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 0.875rem;
+  --text-micro--font-weight: 600;
+  --text-micro--letter-spacing: 0.08em;
+
+  /* ===== Tipografía — escala de valores (mono, numérica) ===== */
+  --text-value-xl: 2.5rem;
+  --text-value-xl--line-height: 2.75rem;
+  --text-value-xl--font-weight: 600;
+
+  --text-value-lg: 1.75rem;
+  --text-value-lg--line-height: 2rem;
+  --text-value-lg--font-weight: 600;
+
+  --text-value-md: 1.25rem;
+  --text-value-md--line-height: 1.5rem;
+  --text-value-md--font-weight: 500;
+
+  --text-value-sm: 0.875rem;
+  --text-value-sm--line-height: 1.125rem;
+  --text-value-sm--font-weight: 500;
+
+  --text-value-xs: 0.75rem;
+  --text-value-xs--line-height: 1rem;
+  --text-value-xs--font-weight: 400;
+
+  /* ===== Spacing ===== */
+  /* La escala base 4px ya es 1:1 con la nativa de Tailwind (space-2 = p-2 = 8px). Único hueco: 3px. */
+  --spacing-0.75: 3px;
+
+  /* ===== Radius ===== */
+  --radius-none: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-pill: 999px;
+
+  /* ===== Colores — superficies, bordes y texto (Light, default en :root) ===== */
+  --color-bg-base: #F2F4F7;
+  --color-bg-subtle: #E9EDF2;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+  --color-border: #D3DAE3;
+  --color-border-strong: #A9B5C3;
+  --color-text-primary: #101820;
+  --color-text-secondary: #4C5A69;
+  --color-text-disabled: #8B98A6;
+  --color-focus-ring: #0B5FBF;
+
+  /* ===== Colores — estado semántico · normal / ok ===== */
+  --color-normal-solid: #0A7F44;
+  --color-normal-bg: #E3F6EB;
+  --color-normal-border: #A8DCC0;
+  --color-normal-text: #065F33;
+
+  /* ===== Colores — estado semántico · warning ===== */
+  --color-warning-solid: #9A6400;
+  --color-warning-bg: #FDF3DC;
+  --color-warning-border: #E8C97A;
+  --color-warning-text: #7A4E00;
+
+  /* ===== Colores — estado semántico · critical / alarm ===== */
+  --color-critical-solid: #C42127;
+  --color-critical-bg: #FDE7E8;
+  --color-critical-border: #F1A9AC;
+  --color-critical-text: #96161B;
+
+  /* ===== Colores — estado semántico · offline / disconnected ===== */
+  --color-offline-solid: #5D6975;
+  --color-offline-bg: #EDEFF2;
+  --color-offline-border: #C7CED6;
+  --color-offline-text: #4A5560;
+
+  /* ===== Colores — estado semántico · maintenance / manual ===== */
+  --color-maintenance-solid: #0B5FBF;
+  --color-maintenance-bg: #E4EFFC;
+  --color-maintenance-border: #A6C9EE;
+  --color-maintenance-text: #08498F;
+
+  /* ===== Colores — backdrop y skeleton ===== */
+  --color-backdrop: rgba(16, 24, 32, .38);
+  --color-skeleton-1: #D3DAE3;
+  --color-skeleton-2: #DDE2E9;
+  --color-skeleton-3: #E5E9EE;
+
+  /* ===== Colores — control deshabilitado (compartido por button, input, etc.) ===== */
+  --color-control-disabled-bg: #E9EDF2;
+  --color-control-disabled-text: #8B98A6;
+  --color-control-disabled-border: #D3DAE3;
+
+  /* ===== Colores — Button · Primary ===== */
+  --color-btn-primary-bg: #0B5FBF;
+  --color-btn-primary-bg-hover: #094F9F;
+  --color-btn-primary-bg-active: #073F80;
+  --color-btn-primary-text: #FFFFFF;
+
+  /* ===== Colores — Button · Secondary ===== */
+  --color-btn-secondary-bg: #FFFFFF;
+  --color-btn-secondary-bg-hover: #E9EDF2;
+  --color-btn-secondary-bg-active: #D3DAE3;
+  --color-btn-secondary-border: #A9B5C3;
+  --color-btn-secondary-border-hover: #8B98A6;
+  --color-btn-secondary-text: #101820;
+
+  /* ===== Colores — Button · Ghost ===== */
+  --color-btn-ghost-bg-hover: #E9EDF2;
+  --color-btn-ghost-bg-active: #D3DAE3;
+  --color-btn-ghost-text: #4C5A69;
+  --color-btn-ghost-text-hover: #101820;
+
+  /* ===== Colores — Button · Danger ===== */
+  --color-btn-danger-bg: #C42127;
+  --color-btn-danger-bg-hover: #A81A20;
+  --color-btn-danger-bg-active: #8E1519;
+  --color-btn-danger-text: #FFFFFF;
+
+  /* ===== Sombras — Light: offset + blur ===== */
+  --shadow-elev-1: 0 1px 2px rgba(16, 24, 32, .08);
+  --shadow-elev-2: 0 2px 6px rgba(16, 24, 32, .10);
+  --shadow-elev-3: 0 12px 28px rgba(16, 24, 32, .16);
+  --shadow-glow-critical: 0 0 0 1px #C42127, 0 0 0 4px rgba(196, 33, 39, .16);
+  --shadow-focus: 0 0 0 2px rgba(11, 95, 191, .22);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* Overrides Dark — misma jerarquía semántica de tokens, valores recalculados por tema */
+.dark {
+  --color-bg-base: #0B0F14;
+  --color-bg-subtle: #10161D;
+  --color-surface: #151C24;
+  --color-surface-raised: #1C252F;
+  --color-border: #263140;
+  --color-border-strong: #38495C;
+  --color-text-primary: #E6EDF5;
+  --color-text-secondary: #9AAABC;
+  --color-text-disabled: #5A6A7C;
+  --color-focus-ring: #4DA3FF;
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
+  --color-normal-solid: #2ED47A;
+  --color-normal-bg: #0F2A1C;
+  --color-normal-border: #1E5B3C;
+  --color-normal-text: #6CE8A4;
 
-body {
-  margin: 0;
-}
+  --color-warning-solid: #F5B32E;
+  --color-warning-bg: #2B2110;
+  --color-warning-border: #6B5117;
+  --color-warning-text: #FFC94D;
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+  --color-critical-solid: #FF4D4F;
+  --color-critical-bg: #2E1315;
+  --color-critical-border: #7A2226;
+  --color-critical-text: #FF8A8C;
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
+  --color-offline-solid: #7B8794;
+  --color-offline-bg: #1A2027;
+  --color-offline-border: #3A4653;
+  --color-offline-text: #A2AEBB;
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
+  --color-maintenance-solid: #4DA3FF;
+  --color-maintenance-bg: #0F1F31;
+  --color-maintenance-border: #21486E;
+  --color-maintenance-text: #82BEFF;
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+  --color-backdrop: rgba(7, 10, 14, .65);
+  --color-skeleton-1: #263140;
+  --color-skeleton-2: #1F2833;
+  --color-skeleton-3: #1A2027;
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  --color-control-disabled-bg: #151C24;
+  --color-control-disabled-text: #5A6A7C;
+  --color-control-disabled-border: #263140;
+
+  --color-btn-primary-bg: #4DA3FF;
+  --color-btn-primary-bg-hover: #6FB6FF;
+  --color-btn-primary-bg-active: #3A8AE0;
+  --color-btn-primary-text: #06121F;
+
+  --color-btn-secondary-bg: #1C252F;
+  --color-btn-secondary-bg-hover: #263140;
+  --color-btn-secondary-bg-active: #151C24;
+  --color-btn-secondary-border: #38495C;
+  --color-btn-secondary-border-hover: #4A5D73;
+  --color-btn-secondary-text: #E6EDF5;
+
+  --color-btn-ghost-bg-hover: #1C252F;
+  --color-btn-ghost-bg-active: #263140;
+  --color-btn-ghost-text: #9AAABC;
+  --color-btn-ghost-text-hover: #E6EDF5;
+
+  --color-btn-danger-bg: #FF4D4F;
+  --color-btn-danger-bg-hover: #FF6C6E;
+  --color-btn-danger-bg-active: #D93B3D;
+  --color-btn-danger-text: #1A0A0B;
+
+  --shadow-elev-1: 0 1px 2px rgba(0, 0, 0, .60);
+  --shadow-elev-2: 0 2px 8px rgba(0, 0, 0, .55);
+  --shadow-elev-3: 0 8px 24px rgba(0, 0, 0, .70);
+  --shadow-glow-critical: 0 0 0 1px #FF4D4F, 0 0 16px rgba(255, 77, 79, .35);
+  --shadow-focus: 0 0 0 2px rgba(77, 163, 255, .30);
 }

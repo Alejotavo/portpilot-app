@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#262D35; }
+  a { color:#4DA3FF; text-decoration:none; }
+  a:hover { color:#8CC4FF; text-decoration:underline; }
+</style>
+</helmet>
+
+<div style="width:1440px;margin:0 auto;padding:56px 48px 96px;background:#262D35;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#E6EDF5;box-sizing:border-box">
+
+  <header style="display:flex;flex-direction:column;gap:14px;padding-bottom:28px;border-bottom:1px solid #263140">
+    <div style="display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7B8794">
+      <span style="width:8px;height:8px;border-radius:999px;background:#2ED47A;box-shadow:0 0 8px rgba(46,212,122,.6)"></span>
+      <span>Design System · Fundaciones · v1.0</span>
+    </div>
+    <h1 style="margin:0;font-size:38px;line-height:1.15;font-weight:600;letter-spacing:-0.02em">Tokens fundacionales SCADA</h1>
+    <p style="margin:0;max-width:820px;font-size:15px;line-height:1.6;color:#9AAABC;text-wrap:pretty">Sistema técnico para monitoreo industrial 24/7. Dos temas completos sobre el mismo set de tokens semánticos: <strong style="color:#E6EDF5;font-weight:600">Dark</strong> (modo principal, sala de control con baja luz ambiente) y <strong style="color:#E6EDF5;font-weight:600">Light</strong> (oficina, reportes impresos, exteriores con alta luminancia). Cada estado se recalcula por tema para conservar jerarquía de urgencia y contraste mínimo AA sobre su propio fondo.</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+      <span style="padding:5px 10px;border:1px solid #263140;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">React + Tailwind</span>
+      <span style="padding:5px 10px;border:1px solid #263140;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">CSS variables · dark: variant</span>
+      <span style="padding:5px 10px;border:1px solid #263140;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">Base 4px</span>
+      <span style="padding:5px 10px;border:1px solid #263140;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">Sin componentes — solo fundaciones</span>
+    </div>
+  </header>
+
+  <!-- ============ 01 COLOR: SUPERFICIES Y TEXTO ============ -->
+  <section style="margin-top:56px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4DA3FF;letter-spacing:.1em">01</span>
+      <h2 style="margin:0;font-size:24px;font-weight:600;letter-spacing:-0.01em">Paleta — superficies, bordes y texto</h2>
+    </div>
+    <p style="margin:0 0 22px;font-size:14px;line-height:1.6;color:#9AAABC;max-width:820px">En Dark las superficies suben por luminancia (nunca por sombra); en Light bajan por sombra y el card es blanco puro para maximizar contraste con el fondo gris frío.</p>
+
+    <div style="display:grid;grid-template-columns:300px 1fr 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden">
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Token</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Dark · principal</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Light · secundario</div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-bg-base</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Fondo de aplicación</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#0B0F14;border:1px solid #38495C;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#0B0F14</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#F2F4F7;border:1px solid #A9B5C3;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#F2F4F7</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-bg-subtle</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Barras, headers, zonas inertes</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#10161D;border:1px solid #38495C;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#10161D</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#E9EDF2;border:1px solid #A9B5C3;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#E9EDF2</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-surface</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Card, panel, widget</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#151C24;border:1px solid #38495C;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#151C24</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#FFFFFF;border:1px solid #A9B5C3;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#FFFFFF</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-surface-raised</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Modal, dropdown, tooltip, hover</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#1C252F;border:1px solid #38495C;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#1C252F</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#FFFFFF;border:1px solid #A9B5C3;flex:none;box-shadow:0 2px 6px rgba(16,24,32,.10)"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#FFFFFF <span style="color:#4C5A69">+ elev-2</span></span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-border</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Divisores, borde de card</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#263140;border:1px solid #38495C;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#263140</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#D3DAE3;border:1px solid #A9B5C3;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#D3DAE3</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-border-strong</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Inputs, foco, celda seleccionada</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#38495C;border:1px solid #4A5D73;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#38495C</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#A9B5C3;border:1px solid #8B98A6;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#A9B5C3</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-text-primary</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Valores, títulos · 13.9:1 D / 15.8:1 L</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#E6EDF5;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#E6EDF5</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#101820;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#101820</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-text-secondary</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Etiquetas, unidades, metadatos</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#9AAABC;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">#9AAABC</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#4C5A69;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4C5A69">#4C5A69</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-text-disabled</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Sin dato, control inactivo</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#5A6A7C;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#5A6A7C">#5A6A7C</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#8B98A6;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#8B98A6">#8B98A6</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-focus-ring</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Anillo de foco de teclado (2px)</div></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#0B0F14;border:2px solid #4DA3FF;flex:none;box-shadow:0 0 0 2px rgba(77,163,255,.25)"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#4DA3FF</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:12px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#FFFFFF;border:2px solid #0B5FBF;flex:none;box-shadow:0 0 0 2px rgba(11,95,191,.2)"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#0B5FBF</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 02 COLOR: ESTADOS ============ -->
+  <section style="margin-top:64px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4DA3FF;letter-spacing:.1em">02</span>
+      <h2 style="margin:0;font-size:24px;font-weight:600;letter-spacing:-0.01em">Paleta — colores semánticos de estado</h2>
+    </div>
+    <p style="margin:0 0 22px;font-size:14px;line-height:1.6;color:#9AAABC;max-width:900px">Cinco estados obligatorios. Cada uno con cuatro tokens: <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">-solid</span> (íconos, indicadores, barras), <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">-bg</span> (fondo suave de badge/alert/fila), <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">-border</span> (contorno de ese contenedor) y <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">-text</span> (texto sobre el fondo suave). En Light los sólidos se oscurecen y desaturan menos para no perder urgencia bajo luz solar; en Dark se bajan de luminancia lo justo para no producir halo en pantalla a oscuras.</p>
+
+    <!-- NORMAL -->
+    <div style="display:grid;grid-template-columns:300px 1fr 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden;margin-bottom:20px">
+      <div style="padding:14px 16px;background:#10161D;display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;border-radius:999px;background:#2ED47A;flex:none"></span><span style="font-size:14px;font-weight:600">Normal / OK</span></div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Dark</div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Light</div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-normal-solid</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#2ED47A;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#2ED47A</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#0A7F44;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#0A7F44</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-normal-bg</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#0F2A1C;border:1px solid #1E5B3C;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#0F2A1C</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#E3F6EB;border:1px solid #A8DCC0;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#E3F6EB</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-normal-border</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#1E5B3C;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#1E5B3C</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#A8DCC0;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#A8DCC0</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-normal-text</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#0F2A1C;border:1px solid #1E5B3C;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#6CE8A4">RUNNING</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#6CE8A4</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#E3F6EB;border:1px solid #A8DCC0;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#065F33">RUNNING</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#065F33</span></div>
+    </div>
+
+    <!-- WARNING -->
+    <div style="display:grid;grid-template-columns:300px 1fr 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden;margin-bottom:20px">
+      <div style="padding:14px 16px;background:#10161D;display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;border-radius:999px;background:#F5B32E;flex:none"></span><span style="font-size:14px;font-weight:600">Warning</span></div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Dark</div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Light</div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-warning-solid</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#F5B32E;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#F5B32E</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#9A6400;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#9A6400</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-warning-bg</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#2B2110;border:1px solid #6B5117;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#2B2110</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#FDF3DC;border:1px solid #E8C97A;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#FDF3DC</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-warning-border</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#6B5117;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#6B5117</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#E8C97A;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#E8C97A</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-warning-text</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#2B2110;border:1px solid #6B5117;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#FFC94D">HIGH LIMIT</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#FFC94D</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#FDF3DC;border:1px solid #E8C97A;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#7A4E00">HIGH LIMIT</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#7A4E00</span></div>
+    </div>
+
+    <!-- CRITICAL -->
+    <div style="display:grid;grid-template-columns:300px 1fr 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden;margin-bottom:20px">
+      <div style="padding:14px 16px;background:#10161D;display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;border-radius:999px;background:#FF4D4F;flex:none;box-shadow:0 0 10px rgba(255,77,79,.7)"></span><span style="font-size:14px;font-weight:600">Critical / Alarm</span></div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Dark</div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Light</div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-critical-solid</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#FF4D4F;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#FF4D4F</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#C42127;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#C42127</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-critical-bg</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#2E1315;border:1px solid #7A2226;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#2E1315</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#FDE7E8;border:1px solid #F1A9AC;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#FDE7E8</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-critical-border</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#7A2226;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#7A2226</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#F1A9AC;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#F1A9AC</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-critical-text</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#2E1315;border:1px solid #7A2226;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#FF8A8C">ALARM · TRIP</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#FF8A8C</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#FDE7E8;border:1px solid #F1A9AC;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#96161B">ALARM · TRIP</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#96161B</span></div>
+    </div>
+
+    <!-- OFFLINE -->
+    <div style="display:grid;grid-template-columns:300px 1fr 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden;margin-bottom:20px">
+      <div style="padding:14px 16px;background:#10161D;display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;border-radius:999px;background:#7B8794;flex:none"></span><span style="font-size:14px;font-weight:600">Offline / Disconnected</span></div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Dark</div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Light</div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-offline-solid</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#7B8794;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#7B8794</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#5D6975;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#5D6975</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-offline-bg</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#1A2027;border:1px solid #3A4653;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#1A2027</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#EDEFF2;border:1px solid #C7CED6;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#EDEFF2</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-offline-border</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#3A4653;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#3A4653</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#C7CED6;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#C7CED6</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-offline-text</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#1A2027;border:1px solid #3A4653;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#A2AEBB">NO COMMS</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#A2AEBB</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#EDEFF2;border:1px solid #C7CED6;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4A5560">NO COMMS</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#4A5560</span></div>
+    </div>
+
+    <!-- MAINTENANCE -->
+    <div style="display:grid;grid-template-columns:300px 1fr 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden">
+      <div style="padding:14px 16px;background:#10161D;display:flex;align-items:center;gap:10px"><span style="width:10px;height:10px;border-radius:999px;background:#4DA3FF;flex:none"></span><span style="font-size:14px;font-weight:600">Maintenance / Manual</span></div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Dark</div>
+      <div style="padding:14px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Light</div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-maintenance-solid</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#4DA3FF;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#4DA3FF</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#0B5FBF;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#0B5FBF</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-maintenance-bg</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#0F1F31;border:1px solid #21486E;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#0F1F31</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#E4EFFC;border:1px solid #A6C9EE;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#E4EFFC</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-maintenance-border</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="width:36px;height:36px;border-radius:4px;background:#21486E;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#21486E</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="width:36px;height:36px;border-radius:4px;background:#A6C9EE;flex:none"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#A6C9EE</span></div>
+
+      <div style="padding:12px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">color-maintenance-text</div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#0B0F14"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#0F1F31;border:1px solid #21486E;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#82BEFF">MANUAL MODE</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">#82BEFF</span></div>
+      <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:#F2F4F7"><div style="display:flex;align-items:center;padding:7px 12px;border-radius:4px;background:#E4EFFC;border:1px solid #A6C9EE;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#08498F">MANUAL MODE</div><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#101820">#08498F</span></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px">
+      <div style="padding:20px;background:#0B0F14;border:1px solid #263140;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794;margin-bottom:14px">Dark · estados en contexto</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#151C24;border-left:3px solid #2ED47A;border-radius:3px"><span style="font-size:13px;color:#E6EDF5">Bomba P-101</span><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#E6EDF5">4.82 <span style="font-size:12px;color:#9AAABC">bar</span></span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#2B2110;border-left:3px solid #F5B32E;border-radius:3px"><span style="font-size:13px;color:#E6EDF5">Tanque T-204</span><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#FFC94D">91.4 <span style="font-size:12px">%</span></span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#2E1315;border-left:3px solid #FF4D4F;border-radius:3px;box-shadow:0 0 0 1px #FF4D4F,0 0 12px rgba(255,77,79,.3)"><span style="font-size:13px;color:#E6EDF5">Compresor C-3</span><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#FF8A8C">148 <span style="font-size:12px">°C</span></span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#1A2027;border-left:3px solid #7B8794;border-radius:3px"><span style="font-size:13px;color:#9AAABC">Sensor F-77</span><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#5A6A7C">— — —</span></div>
+        </div>
+      </div>
+      <div style="padding:20px;background:#F2F4F7;border:1px solid #D3DAE3;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#4C5A69;margin-bottom:14px">Light · estados en contexto</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#FFFFFF;border-left:3px solid #0A7F44;border-radius:3px;box-shadow:0 1px 2px rgba(16,24,32,.08)"><span style="font-size:13px;color:#101820">Bomba P-101</span><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#101820">4.82 <span style="font-size:12px;color:#4C5A69">bar</span></span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#FDF3DC;border-left:3px solid #9A6400;border-radius:3px"><span style="font-size:13px;color:#101820">Tanque T-204</span><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#7A4E00">91.4 <span style="font-size:12px">%</span></span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#FDE7E8;border-left:3px solid #C42127;border-radius:3px;box-shadow:0 0 0 1px #C42127,0 0 0 3px rgba(196,33,39,.16)"><span style="font-size:13px;color:#101820">Compresor C-3</span><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#96161B">148 <span style="font-size:12px">°C</span></span></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:#EDEFF2;border-left:3px solid #5D6975;border-radius:3px"><span style="font-size:13px;color:#4C5A69">Sensor F-77</span><span style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:#8B98A6">— — —</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 TIPOGRAFÍA ============ -->
+  <section style="margin-top:64px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4DA3FF;letter-spacing:.1em">03</span>
+      <h2 style="margin:0;font-size:24px;font-weight:600;letter-spacing:-0.01em">Tipografía</h2>
+    </div>
+    <p style="margin:0 0 22px;font-size:14px;line-height:1.6;color:#9AAABC;max-width:900px">Sí conviene una familia monoespaciada aparte: los valores de proceso cambian varias veces por segundo y con anchos proporcionales los dígitos «bailan» horizontalmente, lo que impide leer una tendencia de un vistazo. Regla del sistema: <strong style="color:#E6EDF5;font-weight:600">todo número que representa una medición, un tag, un timestamp o un código va en mono; todo lo demás va en la sans</strong>.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px">
+      <div style="padding:24px;background:#151C24;border:1px solid #263140;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">font-family-ui</div>
+        <div style="font-size:34px;font-weight:600;margin:10px 0 4px">IBM Plex Sans</div>
+        <div style="font-size:13px;line-height:1.6;color:#9AAABC">Diseñada para interfaz técnica: alta diferenciación de caracteres (1 / l / I, 0 / O), formas abiertas y buen rendimiento a 12–14px. Pesos en uso: 400 / 500 / 600 / 700.</div>
+        <div style="margin-top:14px;font-size:20px;letter-spacing:.02em;color:#E6EDF5">Il1 O0 rn m · ABCÑ abcñ</div>
+      </div>
+      <div style="padding:24px;background:#151C24;border:1px solid #263140;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">font-family-mono</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:34px;font-weight:600;margin:10px 0 4px">IBM Plex Mono</div>
+        <div style="font-size:13px;line-height:1.6;color:#9AAABC">Ancho fijo para valores de proceso, tags de instrumento, timestamps y logs. Comparte esqueleto con la sans, así que conviven sin ruido. Usar <span style="font-family:'IBM Plex Mono',monospace">tabular-nums</span> siempre.</div>
+        <div style="margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:20px;color:#E6EDF5">0123456789 · 04:17:02.483</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:200px 130px 1fr 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden">
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Token</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Size / LH / W</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Muestra Dark</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Muestra Light</div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">text-display</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Título de pantalla / KPI header</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">32 / 40 / 600</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-size:32px;line-height:40px;font-weight:600;color:#E6EDF5;letter-spacing:-0.02em">Planta Norte</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-size:32px;line-height:40px;font-weight:600;color:#101820;letter-spacing:-0.02em">Planta Norte</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">text-h1</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Sección principal</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">24 / 32 / 600</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-size:24px;line-height:32px;font-weight:600;color:#E6EDF5">Línea de envasado</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-size:24px;line-height:32px;font-weight:600;color:#101820">Línea de envasado</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">text-h2</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Subsección, título de modal</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">20 / 28 / 600</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-size:20px;line-height:28px;font-weight:600;color:#E6EDF5">Alarmas activas</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-size:20px;line-height:28px;font-weight:600;color:#101820">Alarmas activas</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">text-h3</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Título de card / widget</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">16 / 24 / 600</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-size:16px;line-height:24px;font-weight:600;color:#E6EDF5">Presión de línea</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-size:16px;line-height:24px;font-weight:600;color:#101820">Presión de línea</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">text-body</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Texto general, descripciones</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">14 / 20 / 400</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-size:14px;line-height:20px;color:#E6EDF5">Umbral superado durante 3 ciclos consecutivos.</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-size:14px;line-height:20px;color:#101820">Umbral superado durante 3 ciclos consecutivos.</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">text-label</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Etiqueta de campo, botón</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">13 / 18 / 500</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-size:13px;line-height:18px;font-weight:500;color:#E6EDF5">Setpoint de temperatura</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-size:13px;line-height:18px;font-weight:500;color:#101820">Setpoint de temperatura</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">text-caption</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Metadato, ayuda, unidad</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">12 / 16 / 400</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-size:12px;line-height:16px;color:#9AAABC">Última actualización hace 2 s</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-size:12px;line-height:16px;color:#4C5A69">Última actualización hace 2 s</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">text-micro</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Header de tabla, overline · +0.08em</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">11 / 14 / 600</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9AAABC">Tag · Valor · Estado</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-size:11px;line-height:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#4C5A69">Tag · Valor · Estado</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">value-xl</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Mono · valor principal de widget</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">40 / 44 / 600</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:baseline;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:40px;line-height:44px;font-weight:600;color:#E6EDF5;font-variant-numeric:tabular-nums">72.48</span><span style="font-size:14px;color:#9AAABC">°C</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:baseline;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:40px;line-height:44px;font-weight:600;color:#101820;font-variant-numeric:tabular-nums">72.48</span><span style="font-size:14px;color:#4C5A69">°C</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">value-lg</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Mono · valor secundario</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">28 / 32 / 600</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:28px;line-height:32px;font-weight:600;color:#E6EDF5;font-variant-numeric:tabular-nums">1 284.0</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:28px;line-height:32px;font-weight:600;color:#101820;font-variant-numeric:tabular-nums">1 284.0</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">value-md</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Mono · celda de tabla, setpoint</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">20 / 24 / 500</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:20px;line-height:24px;font-weight:500;color:#E6EDF5;font-variant-numeric:tabular-nums">0.984</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:20px;line-height:24px;font-weight:500;color:#101820;font-variant-numeric:tabular-nums">0.984</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">value-sm</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Mono · tag, ID, densidad alta</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">14 / 18 / 500</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:18px;font-weight:500;color:#E6EDF5">PT-1042-A</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:14px;line-height:18px;font-weight:500;color:#101820">PT-1042-A</span></div>
+
+      <div style="padding:14px 16px;background:#0B0F14"><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">value-xs</div><div style="font-size:12px;color:#7B8794;margin-top:3px">Mono · timestamp, log, eje de gráfico</div></div>
+      <div style="padding:14px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#9AAABC">12 / 16 / 400</div>
+      <div style="padding:14px 16px;background:#0B0F14;display:flex;align-items:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:16px;color:#9AAABC">2026-08-27 04:17:02.483</span></div>
+      <div style="padding:14px 16px;background:#F2F4F7;display:flex;align-items:center"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:16px;color:#4C5A69">2026-08-27 04:17:02.483</span></div>
+    </div>
+
+    <div style="margin-top:16px;padding:16px 18px;background:#0F1F31;border:1px solid #21486E;border-radius:6px;font-size:13px;line-height:1.6;color:#B9D6F7">
+      <strong style="color:#E6EDF5;font-weight:600">Ajuste de peso por tema.</strong> Sobre fondo oscuro el texto «engorda» ópticamente. Regla: en Dark el cuerpo va en 400 y los títulos en 600; en Light el cuerpo puede subir a 450–500 y los títulos a 600–700 sin verse pesado. Nunca usar 300 o menor en Dark: se deshilacha en monitores de sala de control.
+    </div>
+  </section>
+
+  <!-- ============ 04 SPACING ============ -->
+  <section style="margin-top:64px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4DA3FF;letter-spacing:.1em">04</span>
+      <h2 style="margin:0;font-size:24px;font-weight:600;letter-spacing:-0.01em">Spacing — base 4px</h2>
+    </div>
+    <p style="margin:0 0 22px;font-size:14px;line-height:1.6;color:#9AAABC;max-width:900px">Idéntica en ambos temas y alineada 1:1 con la escala nativa de Tailwind (<span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">space-2 = p-2 = 8px</span>), así que no hace falta extender <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">theme.spacing</span>. La densidad por defecto del SCADA es alta: padding interno de celda 8px, de card 16px.</p>
+
+    <div style="display:grid;grid-template-columns:150px 90px 1fr 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden">
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Token</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Valor</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Escala</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Uso</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-0-5</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">2px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:2px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Separación ícono-texto en badge micro</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-1</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">4px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:4px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Gap etiqueta ↔ valor</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-2</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">8px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:8px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Padding de celda de tabla, gap entre chips</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-3</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">12px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:12px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Padding de control, gap entre filas de lista</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-4</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">16px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:16px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Padding de card, gutter de grilla (default)</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-5</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">20px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:20px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Padding de card cómodo</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-6</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">24px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:24px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Gutter en ≥1280px, separación entre widgets</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-8</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">32px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:32px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Margen lateral de página, separación de bloques</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-10</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">40px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:40px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Separación entre secciones de dashboard</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-12</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">48px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:48px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Bloques mayores, estados vacíos</div>
+
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">space-16</div>
+      <div style="padding:10px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">64px</div>
+      <div style="padding:10px 16px;background:#0B0F14;display:flex;align-items:center"><div style="width:64px;height:16px;background:#4DA3FF"></div></div>
+      <div style="padding:10px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Aire en pantallas de kiosco / videowall</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px">
+      <div style="padding:16px;background:#151C24;border:1px solid #263140;border-radius:6px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794;margin-bottom:6px">Altura de control</div><div style="font-size:13px;line-height:1.6;color:#9AAABC"><span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">control-sm 28px</span> · <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">control-md 32px</span> · <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">control-lg 40px</span></div></div>
+      <div style="padding:16px;background:#151C24;border:1px solid #263140;border-radius:6px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794;margin-bottom:6px">Altura de fila</div><div style="font-size:13px;line-height:1.6;color:#9AAABC"><span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">row-compact 28px</span> · <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">row-default 36px</span> · <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">row-relaxed 44px</span></div></div>
+      <div style="padding:16px;background:#151C24;border:1px solid #263140;border-radius:6px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794;margin-bottom:6px">Target táctil</div><div style="font-size:13px;line-height:1.6;color:#9AAABC">Mín. <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">44 × 44px</span> en HMI de planta (guantes) aunque el control visual mida 32px.</div></div>
+    </div>
+  </section>
+
+  <!-- ============ 05 RADIOS / BORDES / SOMBRAS ============ -->
+  <section style="margin-top:64px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4DA3FF;letter-spacing:.1em">05</span>
+      <h2 style="margin:0;font-size:24px;font-weight:600;letter-spacing:-0.01em">Radios, bordes y elevación</h2>
+    </div>
+    <p style="margin:0 0 22px;font-size:14px;line-height:1.6;color:#9AAABC;max-width:900px">Radios cortos: el lenguaje es instrumental, no consumer. La elevación es el único bloque que <strong style="color:#E6EDF5;font-weight:600">no</strong> se comparte entre temas: en Dark la jerarquía se construye con luminancia y halo (una sombra negra sobre fondo negro no existe); en Light con offset y desenfoque tradicionales.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+      <div style="padding:20px;background:#151C24;border:1px solid #263140;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794;margin-bottom:16px">Radios · idénticos en ambos temas</div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:48px;background:#263140;border:1px solid #38495C;border-radius:0"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">none · 0</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:48px;background:#263140;border:1px solid #38495C;border-radius:2px"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">sm · 2</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:48px;background:#263140;border:1px solid #38495C;border-radius:4px"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">md · 4</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:48px;background:#263140;border:1px solid #38495C;border-radius:6px"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">lg · 6</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:48px;background:#263140;border:1px solid #38495C;border-radius:8px"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">xl · 8</span></div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><div style="width:60px;height:48px;background:#263140;border:1px solid #38495C;border-radius:999px"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#9AAABC">pill · 999</span></div>
+        </div>
+        <div style="margin-top:14px;font-size:13px;line-height:1.6;color:#9AAABC"><span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">md (4px)</span> es el default de card, input y botón. <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">sm (2px)</span> para celdas y badges densos. <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">pill</span> solo para indicadores LED y contadores de alarma.</div>
+      </div>
+      <div style="padding:20px;background:#151C24;border:1px solid #263140;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794;margin-bottom:16px">Grosor de borde · idéntico en ambos temas</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:120px;height:40px;background:#0B0F14;border:1px solid #263140;border-radius:4px"></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">border-hairline · 1px</div><div style="font-size:12px;color:#7B8794">Divisores, card, tabla</div></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:120px;height:40px;background:#0B0F14;border:2px solid #4DA3FF;border-radius:4px"></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">border-strong · 2px</div><div style="font-size:12px;color:#7B8794">Foco de teclado, selección activa</div></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:120px;height:40px;background:#2E1315;border:3px solid #FF4D4F;border-radius:4px"></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">border-alarm · 3px</div><div style="font-size:12px;color:#7B8794">Contenedor en alarma sin reconocer</div></div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:120px;height:40px;background:#0B0F14;border-left:3px solid #F5B32E;border-top:1px solid #263140;border-right:1px solid #263140;border-bottom:1px solid #263140;border-radius:4px"></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">border-accent-left · 3px</div><div style="font-size:12px;color:#7B8794">Codificación de estado en filas</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="padding:24px;background:#0B0F14;border:1px solid #263140;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794;margin-bottom:18px">Elevación Dark · luminancia + glow</div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="padding:14px 16px;background:#151C24;border:1px solid #263140;border-radius:4px;box-shadow:0 1px 2px rgba(0,0,0,.6)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#E6EDF5">shadow-elev-1</div><div style="font-size:12px;color:#7B8794;margin-top:4px">0 1px 2px rgba(0,0,0,.60) — card en reposo</div></div>
+          <div style="padding:14px 16px;background:#1C252F;border:1px solid #38495C;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.55)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#E6EDF5">shadow-elev-2</div><div style="font-size:12px;color:#7B8794;margin-top:4px">0 2px 8px rgba(0,0,0,.55) — hover, dropdown</div></div>
+          <div style="padding:14px 16px;background:#1C252F;border:1px solid #4A5D73;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,.70)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#E6EDF5">shadow-elev-3</div><div style="font-size:12px;color:#7B8794;margin-top:4px">0 8px 24px rgba(0,0,0,.70) — modal, overlay</div></div>
+          <div style="padding:14px 16px;background:#2E1315;border:1px solid #FF4D4F;border-radius:4px;box-shadow:0 0 0 1px #FF4D4F,0 0 16px rgba(255,77,79,.35)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#FF8A8C">shadow-glow-critical</div><div style="font-size:12px;color:#C08487;margin-top:4px">0 0 0 1px solid, 0 0 16px rgba(…,.35)</div></div>
+          <div style="padding:14px 16px;background:#0F1F31;border:1px solid #4DA3FF;border-radius:4px;box-shadow:0 0 0 2px rgba(77,163,255,.30)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#82BEFF">shadow-focus</div><div style="font-size:12px;color:#7FA3C8;margin-top:4px">0 0 0 2px rgba(77,163,255,.30)</div></div>
+        </div>
+      </div>
+      <div style="padding:24px;background:#F2F4F7;border:1px solid #D3DAE3;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#4C5A69;margin-bottom:18px">Elevación Light · offset + blur</div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="padding:14px 16px;background:#FFFFFF;border:1px solid #D3DAE3;border-radius:4px;box-shadow:0 1px 2px rgba(16,24,32,.08)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#101820">shadow-elev-1</div><div style="font-size:12px;color:#4C5A69;margin-top:4px">0 1px 2px rgba(16,24,32,.08) — card en reposo</div></div>
+          <div style="padding:14px 16px;background:#FFFFFF;border:1px solid #D3DAE3;border-radius:4px;box-shadow:0 2px 6px rgba(16,24,32,.10)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#101820">shadow-elev-2</div><div style="font-size:12px;color:#4C5A69;margin-top:4px">0 2px 6px rgba(16,24,32,.10) — hover, dropdown</div></div>
+          <div style="padding:14px 16px;background:#FFFFFF;border:1px solid #C7CED6;border-radius:6px;box-shadow:0 12px 28px rgba(16,24,32,.16)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#101820">shadow-elev-3</div><div style="font-size:12px;color:#4C5A69;margin-top:4px">0 12px 28px rgba(16,24,32,.16) — modal, overlay</div></div>
+          <div style="padding:14px 16px;background:#FDE7E8;border:1px solid #C42127;border-radius:4px;box-shadow:0 0 0 1px #C42127,0 0 0 4px rgba(196,33,39,.16)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#96161B">shadow-glow-critical</div><div style="font-size:12px;color:#96161B;margin-top:4px">0 0 0 1px solid, 0 0 0 4px rgba(…,.16)</div></div>
+          <div style="padding:14px 16px;background:#E4EFFC;border:1px solid #0B5FBF;border-radius:4px;box-shadow:0 0 0 2px rgba(11,95,191,.22)"><div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#08498F">shadow-focus</div><div style="font-size:12px;color:#08498F;margin-top:4px">0 0 0 2px rgba(11,95,191,.22)</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 GRID / LAYOUT ============ -->
+  <section style="margin-top:64px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4DA3FF;letter-spacing:.1em">06</span>
+      <h2 style="margin:0;font-size:24px;font-weight:600;letter-spacing:-0.01em">Grid y layout base</h2>
+    </div>
+    <p style="margin:0 0 22px;font-size:14px;line-height:1.6;color:#9AAABC;max-width:900px">Igual en ambos temas. Se agregan dos breakpoints por encima de la escala estándar de Tailwind: los puestos de operación reales son monitores de 1920 y videowalls de 2560+, donde una grilla de 12 columnas deja los widgets demasiado anchos.</p>
+
+    <div style="display:grid;grid-template-columns:130px 130px 110px 110px 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden">
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Breakpoint</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Min-width</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Columnas</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Gutter</div>
+      <div style="padding:12px 16px;background:#10161D;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Contexto de uso</div>
+
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">base</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">0</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">4</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">16px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Handheld de campo, ronda de operador</div>
+
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">sm</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">640px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">4</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">16px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Tablet vertical</div>
+
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">md</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">768px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">8</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">16px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">HMI de panel local, tablet horizontal</div>
+
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">lg</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">1024px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">8</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">24px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Laptop de supervisor</div>
+
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">xl</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">1280px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">12</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">24px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Estación de trabajo estándar</div>
+
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#E6EDF5">2xl</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">1536px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">12</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">24px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Monitor amplio de operación</div>
+
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4DA3FF">3xl</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">1920px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">16</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">24px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Puesto de sala de control (custom)</div>
+
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4DA3FF">4xl</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">2560px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">16</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#9AAABC">32px</div>
+      <div style="padding:11px 16px;background:#0B0F14;font-size:13px;color:#9AAABC">Videowall / mímico general (custom)</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px">
+      <div style="padding:20px;background:#151C24;border:1px solid #263140;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794;margin-bottom:14px">Chasis de aplicación</div>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.7;color:#9AAABC">
+          <div><span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">layout-header-h</span> — 56px, fijo, siempre visible</div>
+          <div><span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">layout-sidebar-w</span> — 240px expandido / 56px colapsado</div>
+          <div><span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">layout-alarmbar-h</span> — 40px, banda de alarmas fija al pie</div>
+          <div><span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">layout-statusbar-h</span> — 28px, estado de comunicación</div>
+          <div><span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">layout-page-x</span> — 16 / 24 / 32px según breakpoint</div>
+          <div><span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">layout-max-w</span> — none: el SCADA usa ancho completo</div>
+        </div>
+      </div>
+      <div style="padding:20px;background:#0B0F14;border:1px solid #263140;border-radius:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794;margin-bottom:14px">Grilla de 12 columnas · gutter 24</div>
+        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:6px;margin-bottom:12px">
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+          <div style="height:120px;background:#0F1F31;border:1px solid #21486E;border-radius:2px"></div>
+        </div>
+        <div style="font-size:12px;line-height:1.6;color:#7B8794">Widgets estándar: 3 col (tarjeta de valor), 4 col (tabla compacta), 6 col (tendencia), 12 col (mímico de proceso).</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 07 RESUMEN ============ -->
+  <section style="margin-top:64px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4DA3FF;letter-spacing:.1em">07</span>
+      <h2 style="margin:0;font-size:24px;font-weight:600;letter-spacing:-0.01em">Resumen de tokens</h2>
+    </div>
+    <p style="margin:0 0 22px;font-size:14px;line-height:1.6;color:#9AAABC;max-width:900px">Nombre de token · valor Dark · valor Light. Los tokens sin distinción de tema muestran un único valor en ambas columnas.</p>
+
+    <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:1px;background:#1C252F;border:1px solid #1C252F;border-radius:6px;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:12.5px">
+      <div style="padding:10px 14px;background:#10161D;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Token</div>
+      <div style="padding:10px 14px;background:#10161D;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Dark</div>
+      <div style="padding:10px 14px;background:#10161D;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">Light</div>
+
+      <div style="padding:8px 14px;background:#0F1F31;color:#82BEFF;grid-column:1/-1;font-size:11px;letter-spacing:.1em;text-transform:uppercase">Superficies, bordes y texto</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-bg-base</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#0B0F14</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#F2F4F7</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-bg-subtle</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#10161D</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#E9EDF2</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-surface</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#151C24</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#FFFFFF</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-surface-raised</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#1C252F</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#FFFFFF</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-border</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#263140</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#D3DAE3</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-border-strong</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#38495C</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#A9B5C3</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-text-primary</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#E6EDF5</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#101820</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-text-secondary</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#9AAABC</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#4C5A69</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-text-disabled</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#5A6A7C</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#8B98A6</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-focus-ring</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#4DA3FF</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#0B5FBF</div>
+
+      <div style="padding:8px 14px;background:#0F2A1C;color:#6CE8A4;grid-column:1/-1;font-size:11px;letter-spacing:.1em;text-transform:uppercase">Estado · normal / ok</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-normal-solid</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#2ED47A</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#0A7F44</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-normal-bg</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#0F2A1C</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#E3F6EB</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-normal-border</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#1E5B3C</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#A8DCC0</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-normal-text</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#6CE8A4</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#065F33</div>
+
+      <div style="padding:8px 14px;background:#2B2110;color:#FFC94D;grid-column:1/-1;font-size:11px;letter-spacing:.1em;text-transform:uppercase">Estado · warning</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-warning-solid</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#F5B32E</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#9A6400</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-warning-bg</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#2B2110</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#FDF3DC</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-warning-border</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#6B5117</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#E8C97A</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-warning-text</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#FFC94D</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#7A4E00</div>
+
+      <div style="padding:8px 14px;background:#2E1315;color:#FF8A8C;grid-column:1/-1;font-size:11px;letter-spacing:.1em;text-transform:uppercase">Estado · critical / alarm</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-critical-solid</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#FF4D4F</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#C42127</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-critical-bg</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#2E1315</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#FDE7E8</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-critical-border</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#7A2226</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#F1A9AC</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-critical-text</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#FF8A8C</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#96161B</div>
+
+      <div style="padding:8px 14px;background:#1A2027;color:#A2AEBB;grid-column:1/-1;font-size:11px;letter-spacing:.1em;text-transform:uppercase">Estado · offline / disconnected</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-offline-solid</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#7B8794</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#5D6975</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-offline-bg</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#1A2027</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#EDEFF2</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-offline-border</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#3A4653</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#C7CED6</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-offline-text</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#A2AEBB</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#4A5560</div>
+
+      <div style="padding:8px 14px;background:#0F1F31;color:#82BEFF;grid-column:1/-1;font-size:11px;letter-spacing:.1em;text-transform:uppercase">Estado · maintenance / manual</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-maintenance-solid</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#4DA3FF</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#0B5FBF</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-maintenance-bg</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#0F1F31</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#E4EFFC</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-maintenance-border</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#21486E</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#A6C9EE</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-maintenance-text</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#82BEFF</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#08498F</div>
+
+      <div style="padding:8px 14px;background:#10161D;color:#9AAABC;grid-column:1/-1;font-size:11px;letter-spacing:.1em;text-transform:uppercase">Elevación (único bloque que difiere estructuralmente)</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">shadow-elev-1</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 1px 2px rgba(0,0,0,.60)</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 1px 2px rgba(16,24,32,.08)</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">shadow-elev-2</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 2px 8px rgba(0,0,0,.55)</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 2px 6px rgba(16,24,32,.10)</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">shadow-elev-3</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 8px 24px rgba(0,0,0,.70)</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 12px 28px rgba(16,24,32,.16)</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">shadow-glow-critical</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 0 0 1px #FF4D4F, 0 0 16px rgba(255,77,79,.35)</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 0 0 1px #C42127, 0 0 0 4px rgba(196,33,39,.16)</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">shadow-focus</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 0 0 2px rgba(77,163,255,.30)</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">0 0 0 2px rgba(11,95,191,.22)</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-backdrop</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">rgba(7,10,14,.65)</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">rgba(16,24,32,.38)</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">color-skeleton-1 / 2 / 3</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#263140 · #1F2833 · #1A2027</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC">#D3DAE3 · #DDE2E9 · #E5E9EE</div>
+
+      <div style="padding:8px 14px;background:#10161D;color:#9AAABC;grid-column:1/-1;font-size:11px;letter-spacing:.1em;text-transform:uppercase">Compartidos entre temas</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">font-family-ui</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">IBM Plex Sans, system-ui, sans-serif</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">font-family-mono</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">IBM Plex Mono, ui-monospace, monospace</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">text-display / h1 / h2 / h3</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">32/40 · 24/32 · 20/28 · 16/24 — peso 600</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">text-body / label / caption / micro</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">14/20·400 · 13/18·500 · 12/16·400 · 11/14·600 +0.08em</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">value-xl / lg / md / sm / xs</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">40/44·600 · 28/32·600 · 20/24·500 · 14/18·500 · 12/16·400 — mono, tabular</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">space-0.5 … space-16</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">2 · 3 · 4 · 8 · 10 · 12 · 14 · 16 · 20 · 24 · 32 · 40 · 48 · 64 px (medios pasos 0.75 · 2.5 · 3.5)</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">radius-none … radius-pill</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">0 · 2 · 4 · 6 · 8 · 999 px</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">border-hairline / strong / alarm</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">1 · 2 · 3 px</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">breakpoints</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">640 · 768 · 1024 · 1280 · 1536 · 1920 (3xl) · 2560 (4xl)</div>
+            <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">control-xs / sm / md / lg</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">24 · 28 · 32 · 40 px</div>
+      <div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">badge-sm / badge-md</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">18 · 22 px</div>
+<div style="padding:7px 14px;background:#0B0F14;color:#E6EDF5">layout chasis</div><div style="padding:7px 14px;background:#0B0F14;color:#9AAABC;grid-column:2/-1">header 56 · rail 48 (nivel 1) · sidebar 240 (nivel 2) · drawer 280 · alarmbar 40 · statusbar 28</div>
+    </div>
+  </section>
+
+  <!-- ============ 08 CÓDIGO ============ -->
+  <sc-if value="{{ showCode }}" hint-placeholder-val="{{ true }}">
+  <section style="margin-top:64px">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:6px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4DA3FF;letter-spacing:.1em">08</span>
+      <h2 style="margin:0;font-size:24px;font-weight:600;letter-spacing:-0.01em">Implementación</h2>
+    </div>
+    <p style="margin:0 0 18px;font-size:14px;line-height:1.6;color:#9AAABC;max-width:900px">Estrategia recomendada: CSS variables por tema + <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">darkMode: 'class'</span>. Los componentes escriben <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">bg-surface text-primary</span> una sola vez y el tema se resuelve en el <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">&lt;html&gt;</span> — sin pares <span style="font-family:'IBM Plex Mono',monospace;color:#E6EDF5">dark:</span> duplicados en cada clase.</p>
+    <div style="background:#0B0F14;border:1px solid #263140;border-radius:6px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:8px;padding:10px 16px;background:#10161D;border-bottom:1px solid #263140;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7B8794">{{ codeTitle }}</div>
+      <pre style="margin:0;padding:20px;overflow-x:auto;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.7;color:#B9C7D6;white-space:pre">{{ codeText }}</pre>
+    </div>
+  </section>
+  </sc-if>
+
+  <footer style="margin-top:64px;padding-top:24px;border-top:1px solid #263140;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5A6A7C">
+    <span>Fundaciones · sin componentes</span>
+    <span>Próximo paso: componentes base sobre estos tokens</span>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showCode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Implementación&quot;},&quot;summaryFormat&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;CSS variables&quot;,&quot;Tailwind config&quot;],&quot;default&quot;:&quot;CSS variables&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Implementación&quot;}}">
+const CSS_VARS = `/* tokens.css — importar una vez en el entrypoint */
+:root {
+  --color-bg-base:#F2F4F7;      --color-bg-subtle:#E9EDF2;
+  --color-surface:#FFFFFF;      --color-surface-raised:#FFFFFF;
+  --color-border:#D3DAE3;       --color-border-strong:#A9B5C3;
+  --color-text-primary:#101820; --color-text-secondary:#4C5A69;
+  --color-text-disabled:#8B98A6;--color-focus-ring:#0B5FBF;
+
+  --color-normal-solid:#0A7F44;      --color-normal-bg:#E3F6EB;
+  --color-normal-border:#A8DCC0;     --color-normal-text:#065F33;
+  --color-warning-solid:#9A6400;     --color-warning-bg:#FDF3DC;
+  --color-warning-border:#E8C97A;    --color-warning-text:#7A4E00;
+  --color-critical-solid:#C42127;    --color-critical-bg:#FDE7E8;
+  --color-critical-border:#F1A9AC;   --color-critical-text:#96161B;
+  --color-offline-solid:#5D6975;     --color-offline-bg:#EDEFF2;
+  --color-offline-border:#C7CED6;    --color-offline-text:#4A5560;
+  --color-maintenance-solid:#0B5FBF; --color-maintenance-bg:#E4EFFC;
+  --color-maintenance-border:#A6C9EE;--color-maintenance-text:#08498F;
+
+  --shadow-elev-1:0 1px 2px rgba(16,24,32,.08);
+  --shadow-elev-2:0 2px 6px rgba(16,24,32,.10);
+  --shadow-elev-3:0 12px 28px rgba(16,24,32,.16);
+  --shadow-glow-critical:0 0 0 1px #C42127, 0 0 0 4px rgba(196,33,39,.16);
+  --shadow-focus:0 0 0 2px rgba(11,95,191,.22);
+
+  --color-backdrop:rgba(16,24,32,.38);
+  --color-skeleton-1:#D3DAE3; --color-skeleton-2:#DDE2E9; --color-skeleton-3:#E5E9EE;
+}
+
+.dark {
+  --color-bg-base:#0B0F14;      --color-bg-subtle:#10161D;
+  --color-surface:#151C24;      --color-surface-raised:#1C252F;
+  --color-border:#263140;       --color-border-strong:#38495C;
+  --color-text-primary:#E6EDF5; --color-text-secondary:#9AAABC;
+  --color-text-disabled:#5A6A7C;--color-focus-ring:#4DA3FF;
+
+  --color-normal-solid:#2ED47A;      --color-normal-bg:#0F2A1C;
+  --color-normal-border:#1E5B3C;     --color-normal-text:#6CE8A4;
+  --color-warning-solid:#F5B32E;     --color-warning-bg:#2B2110;
+  --color-warning-border:#6B5117;    --color-warning-text:#FFC94D;
+  --color-critical-solid:#FF4D4F;    --color-critical-bg:#2E1315;
+  --color-critical-border:#7A2226;   --color-critical-text:#FF8A8C;
+  --color-offline-solid:#7B8794;     --color-offline-bg:#1A2027;
+  --color-offline-border:#3A4653;    --color-offline-text:#A2AEBB;
+  --color-maintenance-solid:#4DA3FF; --color-maintenance-bg:#0F1F31;
+  --color-maintenance-border:#21486E;--color-maintenance-text:#82BEFF;
+
+  --shadow-elev-1:0 1px 2px rgba(0,0,0,.60);
+  --shadow-elev-2:0 2px 8px rgba(0,0,0,.55);
+  --shadow-elev-3:0 8px 24px rgba(0,0,0,.70);
+  --shadow-glow-critical:0 0 0 1px #FF4D4F, 0 0 16px rgba(255,77,79,.35);
+  --shadow-focus:0 0 0 2px rgba(77,163,255,.30);
+
+  --color-backdrop:rgba(7,10,14,.65);
+  --color-skeleton-1:#263140; --color-skeleton-2:#1F2833; --color-skeleton-3:#1A2027;
+}`;
+
+const TW_CONFIG = `// tailwind.config.js
+export default {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        bg:       { base:'var(--color-bg-base)', subtle:'var(--color-bg-subtle)' },
+        surface:  { DEFAULT:'var(--color-surface)', raised:'var(--color-surface-raised)' },
+        line:     { DEFAULT:'var(--color-border)', strong:'var(--color-border-strong)' },
+        content:  { primary:'var(--color-text-primary)',
+                    secondary:'var(--color-text-secondary)',
+                    disabled:'var(--color-text-disabled)' },
+        normal:      { solid:'var(--color-normal-solid)', bg:'var(--color-normal-bg)',
+                       border:'var(--color-normal-border)', text:'var(--color-normal-text)' },
+        warning:     { solid:'var(--color-warning-solid)', bg:'var(--color-warning-bg)',
+                       border:'var(--color-warning-border)', text:'var(--color-warning-text)' },
+        critical:    { solid:'var(--color-critical-solid)', bg:'var(--color-critical-bg)',
+                       border:'var(--color-critical-border)', text:'var(--color-critical-text)' },
+        offline:     { solid:'var(--color-offline-solid)', bg:'var(--color-offline-bg)',
+                       border:'var(--color-offline-border)', text:'var(--color-offline-text)' },
+        maintenance: { solid:'var(--color-maintenance-solid)', bg:'var(--color-maintenance-bg)',
+                       border:'var(--color-maintenance-border)', text:'var(--color-maintenance-text)' },
+      },
+      fontFamily: {
+        sans: ['IBM Plex Sans','system-ui','sans-serif'],
+        mono: ['IBM Plex Mono','ui-monospace','monospace'],
+      },
+      fontSize: {
+        display:['32px',{lineHeight:'40px',fontWeight:'600',letterSpacing:'-0.02em'}],
+        h1:['24px',{lineHeight:'32px',fontWeight:'600'}],
+        h2:['20px',{lineHeight:'28px',fontWeight:'600'}],
+        h3:['16px',{lineHeight:'24px',fontWeight:'600'}],
+        body:['14px',{lineHeight:'20px'}],
+        label:['13px',{lineHeight:'18px',fontWeight:'500'}],
+        caption:['12px',{lineHeight:'16px'}],
+        micro:['11px',{lineHeight:'14px',fontWeight:'600',letterSpacing:'0.08em'}],
+        'value-xl':['40px',{lineHeight:'44px',fontWeight:'600'}],
+        'value-lg':['28px',{lineHeight:'32px',fontWeight:'600'}],
+        'value-md':['20px',{lineHeight:'24px',fontWeight:'500'}],
+        'value-sm':['14px',{lineHeight:'18px',fontWeight:'500'}],
+        'value-xs':['12px',{lineHeight:'16px'}],
+      },
+      borderRadius: { none:'0', sm:'2px', DEFAULT:'4px', md:'4px', lg:'6px', xl:'8px', pill:'999px' },
+      borderWidth:  { hairline:'1px', strong:'2px', alarm:'3px' },
+      boxShadow: {
+        'elev-1':'var(--shadow-elev-1)',
+        'elev-2':'var(--shadow-elev-2)',
+        'elev-3':'var(--shadow-elev-3)',
+        'glow-critical':'var(--shadow-glow-critical)',
+        focus:'var(--shadow-focus)',
+      },
+      spacing: { '0.75':'3px' },   // 2.5 y 3.5 ya son nativos de Tailwind
+      backgroundColor: { backdrop:'var(--color-backdrop)' },
+      colors: { skeleton: { 1:'var(--color-skeleton-1)', 2:'var(--color-skeleton-2)', 3:'var(--color-skeleton-3)' } },
+      screens: { '3xl':'1920px', '4xl':'2560px' },
+      height: { header:'56px', alarmbar:'40px', statusbar:'28px',
+                'row-compact':'28px', 'row-default':'36px', 'row-relaxed':'44px' },
+      width:  { rail:'48px', sidebar:'240px', drawer:'280px' },
+      minHeight: { 'control-xs':'24px' },
+      height: { 'badge-sm':'18px', 'badge-md':'22px', 'control-xs':'24px' },
+    },
+  },
+};`;
+
+class Component extends DCLogic {
+  renderVals() {
+    const fmt = this.props.summaryFormat ?? 'CSS variables';
+    const isTw = fmt.toLowerCase().indexOf('tailwind') === 0;
+    return {
+      showCode: this.props.showCode ?? true,
+      codeTitle: isTw ? 'tailwind.config.js' : 'tokens.css',
+      codeText: isTw ? TW_CONFIG : CSS_VARS,
+    };
+  }
+}
+
+</script>
+</body>
+</html>
