@@ -1,5 +1,15 @@
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import { TrendUpIcon, BellIcon } from '../Icons'
+import { ROUTES } from '../../../routes/routes'
+
+const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+  `flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer ${
+    isActive ? 'bg-maintenance-bg dark:bg-surface-raised' : ''
+  }`
+
+const monitoreoTabs = ROUTES.filter((route) => route.section === 'monitoreo')
+const alarmasTabs = ROUTES.filter((route) => route.section === 'alarmas')
 
 function Sidebar() {
   const [openSection, setOpenSection] = useState<string | null>(null)
@@ -58,15 +68,13 @@ function Sidebar() {
                 <span className="text-value-xs font-mono text-text-disabled">3</span>
               </header>
               <ul className="flex flex-col gap-0.5 p-2">
-                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
-                  Tab RTG
-                </li>
-                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
-                  Tab STS
-                </li>
-                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
-                  Tab ITV / GPS
-                </li>
+                {monitoreoTabs.map((route) => (
+                  <li key={route.path}>
+                    <NavLink to={route.path} className={navLinkClass}>
+                      {route.navLabel}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </>
           )}
@@ -77,12 +85,13 @@ function Sidebar() {
                 <span className="text-value-xs font-mono text-text-disabled">2</span>
               </header>
               <ul className="flex flex-col gap-0.5 p-2">
-                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
-                  Sin reconocer
-                </li>
-                <li className="flex items-center h-8 px-2 rounded-md text-label text-text-primary hover:bg-maintenance-bg dark:hover:bg-surface-raised cursor-pointer">
-                  Historial
-                </li>
+                {alarmasTabs.map((route) => (
+                  <li key={route.path}>
+                    <NavLink to={route.path} className={navLinkClass}>
+                      {route.navLabel}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </>
           )}

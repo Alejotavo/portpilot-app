@@ -1,8 +1,13 @@
 import { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { MoonIcon, SunIcon, ChevronDownIcon } from '../Icons'
+import { ROUTES } from '../../../routes/routes'
+import Breadcrumb from '../Breadcrumb/Breadcrumb'
 
 function Topbar() {
   const [dark, setDark] = useState(false)
+  const { pathname } = useLocation()
+  const crumbs = ROUTES.find((route) => route.path === pathname)?.crumbs ?? ['Terminal DPWC']
 
   function toggleTheme(next: boolean) {
     setDark(next)
@@ -18,13 +23,7 @@ function Topbar() {
 
       <div className="w-px h-6 bg-border flex-none" />
 
-      <nav className="flex items-center gap-2 flex-1 min-w-0 overflow-hidden whitespace-nowrap">
-        <span className="text-label text-text-secondary">Terminal DPWC</span>
-        <span className="text-text-disabled">/</span>
-        <span className="text-label text-text-secondary">Monitoreo</span>
-        <span className="text-text-disabled">/</span>
-        <span className="text-body font-semibold text-text-primary truncate">RTG</span>
-      </nav>
+      <Breadcrumb crumbs={crumbs} />
 
       <div className="flex items-center h-7 p-0.5 rounded-md border border-border-strong bg-bg-subtle dark:bg-surface flex-none">
         <button
