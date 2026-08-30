@@ -1,6 +1,8 @@
-import React from 'react'
+type IconProps = {
+  className?: string
+}
 
-export function BellIcon({ className = '' }) {
+export function BellIcon({ className = '' }: IconProps) {
   return (
     <svg width="15" height="15" className={className} style={{ stroke: 'currentColor', strokeWidth: 1.7, fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' }}>
       <path d="M4 6.5a3.7 3.7 0 0 1 7.4 0V10l1.3 1.6H2.7L4 10z" />
@@ -9,7 +11,7 @@ export function BellIcon({ className = '' }) {
   )
 }
 
-export function MoonIcon({ className = '' }) {
+export function MoonIcon({ className = '' }: IconProps) {
   return (
     <svg width="13" height="13" className={className} style={{ stroke: 'currentColor', strokeWidth: 1.7, fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' }}>
       <path d="M9.5 7.8A4 4 0 0 1 5.2 3.5 4.4 4.4 0 1 0 9.5 7.8z" />
@@ -17,7 +19,7 @@ export function MoonIcon({ className = '' }) {
   )
 }
 
-export function SunIcon({ className = '' }) {
+export function SunIcon({ className = '' }: IconProps) {
   return (
     <svg width="13" height="13" className={className} style={{ stroke: 'currentColor', strokeWidth: 1.6, fill: 'none', strokeLinecap: 'round' }}>
       <circle cx="6.5" cy="6.5" r="2.6" />
@@ -26,7 +28,7 @@ export function SunIcon({ className = '' }) {
   )
 }
 
-export function ChevronDownIcon({ className = '' }) {
+export function ChevronDownIcon({ className = '' }: IconProps) {
   return (
     <svg width="12" height="12" className={className} style={{ stroke: 'currentColor', strokeWidth: 1.7, fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' }}>
       <path d="M3 4.8 6 7.8 9 4.8" />
@@ -34,7 +36,7 @@ export function ChevronDownIcon({ className = '' }) {
   )
 }
 
-export function TrendUpIcon({ className = '' }) {
+export function TrendUpIcon({ className = '' }: IconProps) {
   return (
     <svg width="17" height="17" className={className} style={{ stroke: 'currentColor', strokeWidth: 1.7, fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' }}>
       <path d="M2 13.5 6 7l3 3 5-7.5" />

@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { MoonIcon, SunIcon, ChevronDownIcon } from '../Icons'
 
 function Topbar() {
   const [dark, setDark] = useState(false)
 
-  function toggleTheme(next) {
+  function toggleTheme(next: boolean) {
     setDark(next)
     document.documentElement.classList.toggle('dark', next)
   }
