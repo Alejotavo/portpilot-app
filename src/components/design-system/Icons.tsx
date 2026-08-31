@@ -2,6 +2,16 @@ type IconProps = {
   className?: string
 }
 
+export function DashboardIcon({ className = '' }: IconProps) {
+  return (
+    <svg width="17" height="17" className={className} style={{ stroke: 'currentColor', strokeWidth: 1.7, fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' }}>
+      <rect x="2" y="2.5" width="6" height="6" rx="1" />
+      <rect x="10" y="2.5" width="5" height="6" rx="1" />
+      <rect x="2" y="10.5" width="13" height="4.5" rx="1" />
+    </svg>
+  )
+}
+
 export function BellIcon({ className = '' }: IconProps) {
   return (
     <svg width="15" height="15" className={className} style={{ stroke: 'currentColor', strokeWidth: 1.7, fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' }}>

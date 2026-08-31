@@ -1,12 +1,15 @@
 export type RouteConfig = {
   path: string
   crumbs: string[]
-  section?: 'monitoreo' | 'alarmas'
+  section?: 'dashboard' | 'monitoreo' | 'alarmas'
   navLabel?: string
 }
 
 export const ROUTES: RouteConfig[] = [
-  { path: '/monitoreo', crumbs: ['Terminal DPWC', 'Monitoreo'] },
+  { path: '/', 
+    crumbs: ['Terminal DPWC', 'Dashboard'],
+    section: 'dashboard',  
+  },
   {
     path: '/monitoreo/rtg',
     crumbs: ['Terminal DPWC', 'Monitoreo', 'RTG'],
