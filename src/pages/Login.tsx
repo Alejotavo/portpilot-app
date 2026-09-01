@@ -59,6 +59,14 @@ function Login() {
         >
           Ingresar
         </button>
+
+        {import.meta.env.DEV && (
+          <div className="text-caption text-text-secondary">
+            <p className="font-semibold mb-1">Credenciales de prueba</p>
+            <p className="font-mono">admin@portpilot.com / admin123</p>
+            <p className="font-mono">user@portpilot.com / user123</p>
+          </div>
+        )}
       </form>
     </div>
   )
