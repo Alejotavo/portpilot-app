@@ -4,12 +4,14 @@ import Topbar from './components/design-system/Topbar/Topbar'
 import Sidebar from './components/design-system/Sidebar/Sidebar'
 import { ROUTES } from './routes/routes'
 import Dashboard from './pages/Dashboard'
+import Login from './pages/Login'
+import RequireAuth from './auth/RequireAuth'
 
 function Placeholder({ title }: { title: string }) {
   return <h1 className="text-h2 text-text-primary">{title}</h1>
 }
 
-function App() {
+function AppLayout() {
   return (
     <div className="min-h-screen bg-bg-base font-sans">
       <Topbar />
@@ -31,6 +33,17 @@ function App() {
         </main>
       </div>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route element={<RequireAuth />}>
+        <Route path="/*" element={<AppLayout />} />
+      </Route>
+    </Routes>
   )
 }
 
