@@ -53,3 +53,13 @@ export function TrendUpIcon({ className = '' }: IconProps) {
     </svg>
   )
 }
+
+export function LogoutIcon({ className = '' }: IconProps) {
+  return (
+    <svg width="14" height="14" className={className} style={{ stroke: 'currentColor', strokeWidth: 1.6, fill: 'none', strokeLinecap: 'round', strokeLinejoin: 'round' }}>
+      <path d="M5.5 2H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2.5" />
+      <path d="M9.5 9.5 12.5 6.5 9.5 3.5" />
+      <path d="M12.5 6.5H5.5" />
+    </svg>
+  )
+}
