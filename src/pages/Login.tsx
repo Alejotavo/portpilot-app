@@ -3,21 +3,20 @@ import { useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
 
 function Login() {
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState(false)
 
   const login = useAuthStore((state) => state.login)
+  const status = useAuthStore((state) => state.status)
+  const error = useAuthStore((state) => state.error)
   const navigate = useNavigate()
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const success = login(email, password)
+    const success = await login(username, password)
     if (success) {
       navigate('/')
-    } else {
-      setError(true)
     }
   }
 
@@ -29,16 +28,14 @@ function Login() {
       >
         <h1 className="text-h3 text-text-primary">Iniciar sesión</h1>
 
-        {error && (
-          <p className="text-label text-critical-text">Email o contraseña incorrectos</p>
-        )}
+        {error && <p className="text-label text-critical-text">{error}</p>}
 
         <label className="flex flex-col gap-1">
-          <span className="text-label text-text-secondary">Email</span>
+          <span className="text-label text-text-secondary">Usuario</span>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="h-9 px-3 rounded-md border border-border-strong bg-bg-subtle text-body text-text-primary"
           />
         </label>
@@ -55,16 +52,17 @@ function Login() {
 
         <button
           type="submit"
-          className="h-9 rounded-md bg-btn-primary-bg text-btn-primary-text text-label font-semibold cursor-pointer"
+          disabled={status === 'loading'}
+          className="h-9 rounded-md bg-btn-primary-bg text-btn-primary-text text-label font-semibold cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Ingresar
+          {status === 'loading' ? 'Ingresando…' : 'Ingresar'}
         </button>
 
         {import.meta.env.DEV && (
           <div className="text-caption text-text-secondary">
-            <p className="font-semibold mb-1">Credenciales de prueba</p>
-            <p className="font-mono">admin@portpilot.com / admin123</p>
-            <p className="font-mono">user@portpilot.com / user123</p>
+            <p className="font-semibold mb-1">Credenciales de prueba (DummyJSON)</p>
+            <p className="font-mono">emilys / emilyspass (admin)</p>
+            <p className="font-mono">averyp / averyppass (user)</p>
           </div>
         )}
       </form>
